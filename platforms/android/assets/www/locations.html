@@ -1,0 +1,61 @@
+<ons-navigator animation="slide" var="locations">
+    <ons-page>
+        <ons-toolbar modifier="opacity">
+            <div class="left">
+                <ons-toolbar-button ng-click="menu.setMainPage('rnwSignIn.html', {closeMenu: true})">
+                    <ons-icon icon="ion-log-in"></ons-icon>
+                    &nbsp;Check in
+                </ons-toolbar-button>
+            </div>
+            <div class="center">RNW Signapp</div>
+            <div class="right">
+                <ons-toolbar-button ng-click="menu.setMainPage('staff.html', {closeMenu: true})">
+                    <ons-icon icon="ion-person-stalker" fixed-width="false"></ons-icon>
+                    &nbsp;Staff
+                </ons-toolbar-button>
+            </div>
+        </ons-toolbar>
+
+        <div class="app-page" ng-controller="listSignInController">
+
+            <ons-list modifier="locations">
+
+                <ons-list-item>
+                    <ons-row modifier="" class="list-item-container">
+                        <ons-col width="100%">
+                            <div class="center">Totally {{signins.stillInPeopleCount}} People in the RNW Building</div>
+                        </ons-col>
+                    </ons-row>
+                </ons-list-item>
+                <ons-list-item modifier="" class="list-item-container" ng-click="" ng-repeat="signin in signins.allPeople">
+                    <ons-row>
+                        <ons-col width="95px">
+                            <img src="{{serverUrl+'/images/photo/'+signin.headImage}}" class="thumbnail">
+                        </ons-col>
+                        <ons-col>
+                            <div class="name">
+                                {{signin.firstName}} {{signin.lastName}}
+                            </div>
+                            <div class="location">
+                                <i class="ion-ios-clock-outline"></i>&nbsp;{{signin.signIn | date:'HH:mm dd/MM/yyyy'}}
+                            </div>
+                            <div class="desc">
+                                Company: {{signin.company}}<br/>
+                                Mobile: {{signin.mobile}}<br/>
+                                Email: {{signin.email}}<br/>
+                                Vehicle Reg: {{signin.vehicleReg}}
+                            </div>
+                        </ons-col>
+                        <ons-col width="45px" ng-if="signin.signOut==null">
+                            <ons-switch modifier="list-item" ng-click="signOut(signin.id)" checked ></ons-switch>
+                        </ons-col>
+                        <ons-col width="45px" ng-if="signin.signOut!=null">
+                            <ons-switch modifier="list-item" ng-click="repeatSignIn(signin.id)"></ons-switch>
+                        </ons-col>
+                    </ons-row>
+                </ons-list-item>
+            </ons-list>
+        </div>
+
+    </ons-page>
+</ons-navigator>   

@@ -1,0 +1,47 @@
+<ons-page ng-controller="signAppController">
+    <ons-toolbar>
+        <div class="left">
+            <ons-toolbar-button ng-click="menu.setMainPage('index.html', {closeMenu: true})">
+                <ons-icon icon="ion-ios-undo-outline"></ons-icon>
+                &nbsp;Back
+            </ons-toolbar-button>
+        </div>
+        <div class="center">New Visitor Check in</div>
+    </ons-toolbar>
+    <ons-list modifier="inset" style="margin-top: 10px">
+
+        <form id="signInForm" action="{{serverUrl}}/people/signIn">
+            <ons-list-item>
+                <input type="text" class="text-input text-input--transparent" placeholder="First name" name="firstName"
+                       style="width: 100%">
+            </ons-list-item>
+            <ons-list-item>
+                <input type="text" class="text-input text-input--transparent" placeholder="Last name" name="lastName"
+                       style="width: 100%">
+            </ons-list-item>
+            <ons-list-item>
+                <input type="text" class="text-input text-input--transparent" placeholder="Company" name="company"
+                       style="width: 100%">
+            </ons-list-item>
+            <ons-list-item>
+                <input type="text" class="text-input text-input--transparent" placeholder="Email" name="email"
+                       style="width: 100%">
+            </ons-list-item>
+            <ons-list-item>
+                <input type="text" class="text-input text-input--transparent" placeholder="Mobile" name="mobile"
+                       style="width: 100%">
+            </ons-list-item>
+            <ons-list-item>
+                <input type="text" class="text-input text-input--transparent" placeholder="Vehicle Reg"
+                       name="vehicleReg"
+                       style="width: 100%">
+            </ons-list-item>
+        </form>
+    </ons-list>
+
+    <div style="padding: 10px 9px" ng-click="signIn()">
+        <ons-button modifier="large" style="margin: 0 auto;">
+            Check in
+        </ons-button>
+    </div>
+</ons-page>

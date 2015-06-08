@@ -1,0 +1,44 @@
+<ons-page>
+    <ons-toolbar>
+        <div class="left">
+            <ons-toolbar-button ng-click="menu.setMainPage('index.html', {closeMenu: true})">
+                <ons-icon icon="ion-ios-undo-outline"></ons-icon>
+                &nbsp;Back
+            </ons-toolbar-button>
+        </div>
+        <div class="center">Staff Check in</div>
+    </ons-toolbar>
+
+    <div class="app-page">
+        <ons-list modifier="locations" ng-controller="listStaffSignInController">
+            <ons-list-item modifier="" class="list-item-container" ng-click="" ng-repeat="signin in signins">
+                <ons-row>
+                    <ons-col width="95px">
+                        <img src="{{serverUrl+'/images/photo/'+signin.headImage}}" class="thumbnail">
+                    </ons-col>
+                    <ons-col>
+                        <div class="name">
+                            {{signin.firstName}} {{signin.lastName}}
+                        </div>
+                        <div class="location">
+                            <i class="ion-ios-clock-outline"></i>&nbsp;{{signin.signIn | date:'HH:mm dd/MM/yyyy'}}
+                        </div>
+                        <div class="desc">
+                            Company: {{signin.company}}<br/>
+                            Mobile: {{signin.mobile}}<br/>
+                            Email: {{signin.email}}<br/>
+                            Vehicle Reg: {{signin.vehicleReg}}
+                        </div>
+                    </ons-col>
+                    <ons-col width="45px" ng-if="signin.signOut==null">
+                        <ons-switch modifier="list-item" ng-click="signOut(signin.id)" checked ></ons-switch>
+                    </ons-col>
+                    <ons-col width="45px" ng-if="signin.signOut!=null">
+                        <ons-switch modifier="list-item" ng-click="repeatSignIn(signin.id)"></ons-switch>
+                    </ons-col>
+                </ons-row>
+            </ons-list-item>
+        </ons-list>
+    </div>
+
+</ons-page>
